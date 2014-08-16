@@ -139,7 +139,7 @@ sudo npm update -g kizz
     "basename": "basename"
     "content": "html", // after kizz-markdown
     "title": "title", // after kizz-markdown
-    "modifiedTime": "git/fs modified time (ISO String, eg. 2014-07-27T04:29:14.090Z)",
+    "modifiedTime": "YYYY-",
     "createTime": "git/fs create time (ISO String, eg. 2014-07-27T04:29:14.090Z)",
     "link": "link for the post (optional)",
     "tags": ["tag1", "tag2"] // after kizz-guess-tags
