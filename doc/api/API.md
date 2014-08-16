@@ -1,5 +1,13 @@
 ## This
 
+### order
+
+- this.logger
+
+- this.config
+
+- this.newFiles, this.changedFiles, this.unchangedFiles, this.removedFiles
+
 ### this.logger
 
 ```
@@ -22,11 +30,7 @@ see also: https://github.com/nomiddlename/log4js-node
         modifiedTime: 'YYYY-MM-DD H:mm:ss Z',
         createTime: 'YYYY-MM-DD H:mm:ss Z'
     },
-    {
-        path: 'path of file B',
-        modifiedTime: 'YYYY-MM-DD H:mm:ss Z',
-        createTime: 'YYYY-MM-DD H:mm:ss Z'
-    }
+    {}
 ]
 ```
 
@@ -39,10 +43,38 @@ see also: https://github.com/nomiddlename/log4js-node
         modifiedTime: 'YYYY-MM-DD H:mm:ss Z',
         createTime: 'YYYY-MM-DD H:mm:ss Z'
     },
+    {}
+]
+```
+
+### this.unchangedFiles
+
+```javascript
+[
     {
-        path: 'path of file B',
+        path: 'path of file A',
         modifiedTime: 'YYYY-MM-DD H:mm:ss Z',
-        createTime: 'YYYY-MM-DD H:mm:ss Z'
-    }
+        createTime: 'YYYY-MM-DD H:mm:ss Z',
+        content: "html", // by kizz-markdown
+        title: "title", // by kizz-markdown
+        tags: ["tag1", "tag2"] // by kizz-guess-tags
+    },
+    {}
+]
+```
+
+### this.removedFiles
+
+```javascript
+[
+    {
+        path: 'path of file A',
+        modifiedTime: 'YYYY-MM-DD H:mm:ss Z',
+        createTime: 'YYYY-MM-DD H:mm:ss Z',
+        content: "html", // by kizz-markdown
+        title: "title", // by kizz-markdown
+        tags: ["tag1", "tag2"] // by kizz-guess-tags
+    },
+    {}
 ]
 ```
