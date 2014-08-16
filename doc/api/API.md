@@ -27,8 +27,8 @@ see also: https://github.com/nomiddlename/log4js-node
 [
     {
         path: 'path of file A',
-        modifiedTime: 'YYYY-MM-DD H:mm:ss Z',
-        createTime: 'YYYY-MM-DD H:mm:ss Z'
+        modificationTime: 'YYYY-MM-DD H:mm:ss Z',
+        creationTime: 'YYYY-MM-DD H:mm:ss Z'
     },
     {}
 ]
@@ -40,8 +40,8 @@ see also: https://github.com/nomiddlename/log4js-node
 [
     {
         path: 'path of file A',
-        modifiedTime: 'YYYY-MM-DD H:mm:ss Z',
-        createTime: 'YYYY-MM-DD H:mm:ss Z'
+        modificationTime: 'YYYY-MM-DD H:mm:ss Z',
+        creationTime: 'YYYY-MM-DD H:mm:ss Z'
     },
     {}
 ]
@@ -53,8 +53,8 @@ see also: https://github.com/nomiddlename/log4js-node
 [
     {
         path: 'path of file A',
-        modifiedTime: 'YYYY-MM-DD H:mm:ss Z',
-        createTime: 'YYYY-MM-DD H:mm:ss Z',
+        modificationTime: 'YYYY-MM-DD H:mm:ss Z',
+        creationTime: 'YYYY-MM-DD H:mm:ss Z',
         content: "html", // by kizz-markdown
         title: "title", // by kizz-markdown
         tags: ["tag1", "tag2"] // by kizz-guess-tags
@@ -69,8 +69,8 @@ see also: https://github.com/nomiddlename/log4js-node
 [
     {
         path: 'path of file A',
-        modifiedTime: 'YYYY-MM-DD H:mm:ss Z',
-        createTime: 'YYYY-MM-DD H:mm:ss Z',
+        modificationTime: 'YYYY-MM-DD H:mm:ss Z',
+        creationTime: 'YYYY-MM-DD H:mm:ss Z',
         content: "html", // by kizz-markdown
         title: "title", // by kizz-markdown
         tags: ["tag1", "tag2"] // by kizz-guess-tags
