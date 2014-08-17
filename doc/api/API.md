@@ -1,10 +1,10 @@
 ## This
 
-### order
+### load order
 
 - this.logger
 
-- this.config
+- this.config, this.storage
 
 - this.newFiles, this.changedFiles, this.unchangedFiles, this.removedFiles
 
@@ -20,6 +20,13 @@ this.logger.fatal('Cheese was breeding ground for listeria.');
 ```
 
 see also: https://github.com/nomiddlename/log4js-node
+
+### this.storage
+
+```javascript
+var str = this.storage.getItem('key');
+this.storage.setItem('key2', 'STRING');
+```
 
 ### this.newFiles
 
@@ -57,7 +64,7 @@ see also: https://github.com/nomiddlename/log4js-node
         creationTime: 'YYYY-MM-DD H:mm:ss Z',
         content: "html", // by kizz-markdown
         title: "title", // by kizz-markdown
-        tags: ["tag1", "tag2"] // by kizz-guess-tags
+        tags: ["tag1", "tag2"] // front yaml or kizz-guess-tags
     },
     {}
 ]
@@ -73,7 +80,7 @@ see also: https://github.com/nomiddlename/log4js-node
         creationTime: 'YYYY-MM-DD H:mm:ss Z',
         content: "html", // by kizz-markdown
         title: "title", // by kizz-markdown
-        tags: ["tag1", "tag2"] // by kizz-guess-tags
+        tags: ["tag1", "tag2"] // front yaml or kizz-guess-tags
     },
     {}
 ]
