@@ -28,6 +28,14 @@ var str = this.storage.getItem('key');
 this.storage.setItem('key2', 'STRING');
 ```
 
+### this.cache
+
+```javascript
+var str = this.cache.getItem('key');
+this.cache.setItem('key2', 'STRING');
+```
+
+
 ### this.newFiles
 
 ```javascript

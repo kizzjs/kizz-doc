@@ -1,12 +1,20 @@
 # 关于 Generator
 
 Async, Promise, Generator 是 Javascript 三种语法。
+
 虽然 generator 现在刚刚开始发展，但是我还是更加看好它，因为它很自然。
+
+当然还是有 Async Functions 就是啦。
+不过离 ES7 还远着呢，而且似乎社区现在也没有大量这方面的支持，
+所以在很长的一段时间内 kizz 都会使用 generator。
+
+Kizz 不介意破坏性改变，只要真的能够有所提升。
 
 ## 跳出流程控制
 
 一个函数控制整个流程。
 关于这个，当然用传统的方式也是可以做到的。
+不过我是觉得看上去没有用 Generator 要来得自然就是了。
 
 ### callback version
 
@@ -39,7 +47,8 @@ app.use(context, next) {
 脱离了大量的 callback，代码就变得直白了起来。
 （关于 Error Handle，NodeJS也提供了这个：http://nodejs.org/api/domain.html）
 
-下面这个是来自官方的例子：
+
+官方的例子：
 
 ```javascript
 var co = require('co');
