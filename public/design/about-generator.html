@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html charset="UTF-8">
+  <head>
+    <title>Site Name Here</title>
+  </head>
+  <body>
+    <header><a href="http://example.com">Site Name Here</a></header>
+    <article>
+      <header>关于 Generator
+        <ul class="tags">
+          <li>kizz</li>
+          <li>api</li>
+          <li>generator</li>
+        </ul></header>
+      <main><h1 id="-generator">关于 Generator</h1>
+<p>Async, Promise, Generator 是 Javascript 三种语法。</p>
+<p>虽然 generator 现在刚刚开始发展，但是我还是更加看好它，因为它很自然。</p>
+<p>当然还是有 Async Functions 就是啦。
+不过离 ES7 还远着呢，而且似乎社区现在也没有大量这方面的支持，
+所以在很长的一段时间内 kizz 都会使用 generator。</p>
+<p>Kizz 不介意破坏性改变，只要真的能够有所提升。</p>
+<h2 id="-">跳出流程控制</h2>
+<p>一个函数控制整个流程。
+关于这个，当然用传统的方式也是可以做到的。
+不过我是觉得看上去没有用 Generator 要来得自然就是了。</p>
+<h3 id="callback-version">callback version</h3>
+<pre><code class="lang-javascript">app.use(context, next) {
+    // do sth
+    var afterNext = function() {
+        // do sth later
+    }
+    next(context, afterNext);
+}
+</code></pre>
+<h3 id="promise-versioin">promise versioin</h3>
+<pre><code class="lang-javascript">app.use(context, next) {
+    // do sth
+    // next take context &amp; generate a new promise
+    next(context).then(function() {
+        // do sth later
+    });
+}
+</code></pre>
+<h2 id="-">异步到同步的转变</h2>
+<p><code>co</code> 这个库简化了异步的书写、提供了真正能用的 try catch 支持。</p>
+<p>脱离了大量的 callback，代码就变得直白了起来。
+（关于 Error Handle，NodeJS也提供了这个：<a href="http://nodejs.org/api/domain.html）">http://nodejs.org/api/domain.html）</a></p>
+<p>官方的例子：</p>
+<pre><code class="lang-javascript">var co = require(&#39;co&#39;);
+var thunkify = require(&#39;thunkify&#39;);
+var request = require(&#39;request&#39;);
+var get = thunkify(request.get);
+
+co(function *(){
+  var a = yield get(&#39;http://google.com&#39;);
+  var b = yield get(&#39;http://yahoo.com&#39;);
+  var c = yield get(&#39;http://cloudup.com&#39;);
+  console.log(a[0].statusCode);
+  console.log(b[0].statusCode);
+  console.log(c[0].statusCode);
+})()
+
+co(function *(){
+  var a = get(&#39;http://google.com&#39;);
+  var b = get(&#39;http://yahoo.com&#39;);
+  var c = get(&#39;http://cloudup.com&#39;);
+  var res = yield [a, b, c];
+  console.log(res);
+})()
+
+// Error handling
+
+co(function *(){
+  try {
+    var res = yield get(&#39;http://badhost.invalid&#39;);
+    console.log(res);
+  } catch(e) {
+    console.log(e.code) // ENOTFOUND
+ }
+})()
+</code></pre>
+</main>
+    </article>
+  </body>
+</html>

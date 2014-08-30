@@ -1,8 +1,6 @@
 module.exports = function(app) {
     app.use(function *(next) {
 
-        this.logger.setLevel("debug");
-
         var ctx = this;
 
         this.config = {
@@ -22,4 +20,4 @@ module.exports = function(app) {
 
         yield next;
     });
-}
+};
