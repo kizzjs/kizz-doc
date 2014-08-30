@@ -2,6 +2,14 @@
 
 Relaxing blog system / static site generator.
 
+## Install
+
+```
+sudo npm install -g kizz --production
+```
+
+Note: for nodejs < 0.11, kizz uses gnode for generator support.
+
 ## Status
 
 Still coding. The alpha version may come out this summer.
@@ -78,10 +86,18 @@ Still coding. The alpha version may come out this summer.
 kizz build
 ```
 
-### Rebuild all
+### Rebuild
+
+#### Rebuild all files
 
 ```
 kizz rebuild
+```
+
+### Rebuild only latest N files
+
+```
+kizz rebuild N
 ```
 
 ### Preview
@@ -134,10 +150,7 @@ sudo npm update -g kizz
 ```javascript
 {
     "path": "filepath",
-    "extname": "extname", // ".md"
-    "dirname": "dirname",
-    "basename": "basename"
-    "content": "html", // after kizz-markdown
+    "content": "html string", // after kizz-markdown
     "title": "title", // after kizz-markdown
     "modifiedTime": "YYYY-",
     "createTime": "git/fs create time (ISO String, eg. 2014-07-27T04:29:14.090Z)",

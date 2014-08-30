@@ -3,13 +3,22 @@ module.exports = function(app) {
 
         this.logger.setLevel("debug");
 
+        var ctx = this;
+
         this.config = {
             site: {
                 name: "Site Name Here",
                 url: "http://example.com"
             },
-            source: "doc/" // defaults to source/
-        }
+            // global tags
+            tags: [
+                "kizz",
+                "api",
+                "generator"
+            ],
+            source: "doc/", // defaults to source/
+            target: ctx.cwd + "/public/" // target dir
+        };
 
         yield next;
     });
