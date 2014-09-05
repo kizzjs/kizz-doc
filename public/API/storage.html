@@ -22,7 +22,7 @@
                 <h1><a href="#">Storage and Cache</a></h1>
                 <div class="meta">
                     <div class="key">Update:</div>
-                    <div class="value">Yesterday at 8:21 PM</div>
+                    <div class="value">Today at 2:46 PM</div>
                     <div class="key">Tags:</div>
                     <div class="value">
                         <ul class="tags">
@@ -34,6 +34,7 @@
             </header>
             <main>
                 <p>Kizz uses <a href="https://github.com/zenozeng/version-storage">VersionStorage</a> for Storage and Cache.</p>
+                <p>Storage are saved in <code>./.kizz/storage/</code> and Cache are saved in <code>./.kizz/cache/</code>. Storage and Cache have same API, but Cache will be cleared when <code>kizz rebuild</code>.</p>
                 <h2 id="usage">Usage</h2>
                 <h3 id="storage">Storage</h3>
                 <pre><code class="lang-javascript">var upgrade = function(storage) {
@@ -57,7 +58,7 @@
     storage.setVersion(3);
 };
 
-var storage = new this.Storage(&#39;YOUR\_UNIQUE\_ID/DB_NAME&#39;, upgrade);
+var storage = new this.Storage(&#39;YOUR_UNIQUE_ID/DB_NAME&#39;, upgrade);
 var sth = storage.getItem(&#39;sth&#39;);
 storage.setItem(&#39;sth&#39;, &#39;STRING&#39;);
 storage.removeItem(&#39;sth&#39;);
@@ -65,7 +66,7 @@ storage.removeItem(&#39;sth&#39;);
                 <h3 id="cache">Cache</h3>
                 <p><strong>Note: Cache will be cleared when <code>kizz rebuild</code>.</strong>
                 </p>
-                <pre><code class="lang-javascript">var cache = new this.Cache(&#39;YOUR\_UNIQUE\_ID/DB_NAME&#39;, upgrade);
+                <pre><code class="lang-javascript">var cache = new this.Cache(&#39;YOUR_UNIQUE_ID/DB_NAME&#39;, upgrade);
 var sth = cache.getItem(&#39;sth&#39;);
 cache.setItem(&#39;sth&#39;, &#39;STRING&#39;);
 cache.removeItem(&#39;sth&#39;);

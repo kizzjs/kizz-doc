@@ -2,6 +2,9 @@
 
 Kizz uses [VersionStorage](https://github.com/zenozeng/version-storage) for Storage and Cache.
 
+Storage are saved in `./.kizz/storage/` and Cache are saved in `./.kizz/cache/`.
+Storage and Cache have same API, but Cache will be cleared when `kizz rebuild`.
+
 ## Usage
 
 ### Storage
@@ -28,7 +31,7 @@ var upgrade = function(storage) {
     storage.setVersion(3);
 };
 
-var storage = new this.Storage('YOUR\_UNIQUE\_ID/DB_NAME', upgrade);
+var storage = new this.Storage('YOUR_UNIQUE_ID/DB_NAME', upgrade);
 var sth = storage.getItem('sth');
 storage.setItem('sth', 'STRING');
 storage.removeItem('sth');
@@ -39,7 +42,7 @@ storage.removeItem('sth');
 **Note: Cache will be cleared when `kizz rebuild`.**
 
 ```javascript
-var cache = new this.Cache('YOUR\_UNIQUE\_ID/DB_NAME', upgrade);
+var cache = new this.Cache('YOUR_UNIQUE_ID/DB_NAME', upgrade);
 var sth = cache.getItem('sth');
 cache.setItem('sth', 'STRING');
 cache.removeItem('sth');

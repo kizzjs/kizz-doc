@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title>Kizz Documentation</title>
     <link>http://kizz.zenozeng.com/</link>
-    <updated>2014-09-05T06:24:50Z</updated>
+    <updated>2014-09-05T06:46:45Z</updated>
     <link rel="alternate" href="http://kizz.zenozeng.com/"/>
     <subtitle>The official documentation for Kizz.</subtitle>
     <generator>Feed for Node.js</generator>
@@ -129,9 +129,11 @@ sudo npm link ~/code/kizz-helloworld/
         <id>http://kizz.zenozeng.com/API/storage.html</id>
         <link href="http://kizz.zenozeng.com/API/storage.html">
         </link>
-        <updated>2014-09-04T12:21:36Z</updated>
+        <updated>2014-09-05T06:46:45Z</updated>
         <content type="html"><![CDATA[
 <p>Kizz uses <a href="https://github.com/zenozeng/version-storage">VersionStorage</a> for Storage and Cache.</p>
+<p>Storage are saved in <code>./.kizz/storage/</code> and Cache are saved in <code>./.kizz/cache/</code>.
+Storage and Cache have same API, but Cache will be cleared when <code>kizz rebuild</code>.</p>
 <h2 id="usage">Usage</h2>
 <h3 id="storage">Storage</h3>
 <pre><code class="lang-javascript">var upgrade = function(storage) {
@@ -155,14 +157,14 @@ sudo npm link ~/code/kizz-helloworld/
     storage.setVersion(3);
 };
 
-var storage = new this.Storage(&#39;YOUR\_UNIQUE\_ID/DB_NAME&#39;, upgrade);
+var storage = new this.Storage(&#39;YOUR_UNIQUE_ID/DB_NAME&#39;, upgrade);
 var sth = storage.getItem(&#39;sth&#39;);
 storage.setItem(&#39;sth&#39;, &#39;STRING&#39;);
 storage.removeItem(&#39;sth&#39;);
 </code></pre>
 <h3 id="cache">Cache</h3>
 <p><strong>Note: Cache will be cleared when <code>kizz rebuild</code>.</strong></p>
-<pre><code class="lang-javascript">var cache = new this.Cache(&#39;YOUR\_UNIQUE\_ID/DB_NAME&#39;, upgrade);
+<pre><code class="lang-javascript">var cache = new this.Cache(&#39;YOUR_UNIQUE_ID/DB_NAME&#39;, upgrade);
 var sth = cache.getItem(&#39;sth&#39;);
 cache.setItem(&#39;sth&#39;, &#39;STRING&#39;);
 cache.removeItem(&#39;sth&#39;);
