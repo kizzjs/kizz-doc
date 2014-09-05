@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html charset="UTF-8">
+
+<head>
+    <!-- To view prerender-->
+    <!-- use chrome://net-internals/#prerender instead of dev tools-->
+    <!-- or it will be canceled-->
+    <link rel="kizz-base-url" href="..">
+    <link rel="stylesheet" href="../static/styles.css">
+    <title>Kizz Documentation</title>
+</head>
+
+<body>
+    <header id="header">
+        <h1><a href="../index.html">Kizz Documentation</a></h1>
+        <p>The official documentation for Kizz.</p>
+        <input id="search">
+    </header>
+    <main id="main">
+        <article>
+            <header>
+                <h1><a href="#">Storage and Cache</a></h1>
+                <div class="meta">
+                    <div class="key">Update:</div>
+                    <div class="value">Yesterday at 8:21 PM</div>
+                    <div class="key">Tags:</div>
+                    <div class="value">
+                        <ul class="tags">
+                            <li class="tag">Kizz</li>
+                            <li class="tag">API</li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+            <main>
+                <p>Kizz uses <a href="https://github.com/zenozeng/version-storage">VersionStorage</a> for Storage and Cache.</p>
+                <h2 id="usage">Usage</h2>
+                <h3 id="storage">Storage</h3>
+                <pre><code class="lang-javascript">var upgrade = function(storage) {
+    var oldVersion = storage.version;
+    if(oldVersion &lt; 1) {
+        // Version 1 is the first version of the database.
+        storage.setItem(&#39;hello&#39;, &#39;[1, 2, 3]&#39;);
+    }
+    if(oldVersion &lt; 2) {
+        // Version 2 changes the data structure of `hello`
+        var hello = storage.getItem(&#39;hello&#39;);
+        // do some remaping
+        storage.setItem(&#39;hello&#39;, newhello);
+    }
+    if(oldVersion &lt; 3) {
+        // Version 3 changes the name of `hello`
+        var hello = storage.getItem(&#39;hello&#39;);
+        storage.removeItem(&#39;hello&#39;);
+        storage.setItem(&#39;world&#39;, hello);
+    }
+    storage.setVersion(3);
+};
+
+var storage = new this.Storage(&#39;YOUR\_UNIQUE\_ID/DB_NAME&#39;, upgrade);
+var sth = storage.getItem(&#39;sth&#39;);
+storage.setItem(&#39;sth&#39;, &#39;STRING&#39;);
+storage.removeItem(&#39;sth&#39;);
+</code></pre>
+                <h3 id="cache">Cache</h3>
+                <p><strong>Note: Cache will be cleared when <code>kizz rebuild</code>.</strong>
+                </p>
+                <pre><code class="lang-javascript">var cache = new this.Cache(&#39;YOUR\_UNIQUE\_ID/DB_NAME&#39;, upgrade);
+var sth = cache.getItem(&#39;sth&#39;);
+cache.setItem(&#39;sth&#39;, &#39;STRING&#39;);
+cache.removeItem(&#39;sth&#39;);
+</code></pre>
+            </main>
+        </article>
+    </main>
+    <footer id="footer">Copyright (C) Kizz Team. All rights reserved.</footer>
+    <script></script>
+    <script src="../static/js/prism.js"></script>
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/bundle.js"></script>
+    <script src="../db.jsonp"></script>
+</body>
+
+</html>

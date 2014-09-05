@@ -1,31 +1,128 @@
 <!DOCTYPE html>
 <html charset="UTF-8">
-  <head>
-    <title>Site Name Here</title>
-  </head>
-  <body>
-    <header><a href="http://example.com">Site Name Here</a></header>
-    <artilce>关于 Generator
-      <ul class="tags">
-        <li>kizz</li>
-        <li>api</li>
-        <li>generator</li>
-      </ul></artilce>
-    <artilce>hex
-      <ul class="tags">
-      </ul></artilce>
-    <artilce>API
-      <ul class="tags">
-        <li>kizz</li>
-        <li>api</li>
-      </ul></artilce>
-    <artilce>Middleware Guide
-      <ul class="tags">
-        <li>kizz</li>
-      </ul></artilce>
-    <artilce>Kizz Theme Guide
-      <ul class="tags">
-        <li>kizz</li>
-      </ul></artilce>
-  </body>
+
+<head>
+    <!-- To view prerender-->
+    <!-- use chrome://net-internals/#prerender instead of dev tools-->
+    <!-- or it will be canceled-->
+    <link rel="kizz-base-url" href=".">
+    <link rel="stylesheet" href="static/styles.css">
+    <title>Kizz Documentation</title>
+</head>
+
+<body>
+    <header id="header">
+        <h1><a href="index.html">Kizz Documentation</a></h1>
+        <p>The official documentation for Kizz.</p>
+        <input id="search">
+    </header>
+    <main id="main">
+        <article>
+            <header>
+                <h1><a href="API/API.html">Kizz API Documentation</a></h1>
+                <div class="meta">
+                    <div class="key">Update:</div>
+                    <div class="value">Yesterday at 10:00 PM</div>
+                    <div class="key">Tags:</div>
+                    <div class="value">
+                        <ul>
+                            <li class="tag">Kizz</li>
+                            <li class="tag">API</li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+        </article>
+        <article>
+            <header>
+                <h1><a href="API/middleware-guild.html">Kizz Middleware Guide</a></h1>
+                <div class="meta">
+                    <div class="key">Update:</div>
+                    <div class="value">Yesterday at 9:59 PM</div>
+                    <div class="key">Tags:</div>
+                    <div class="value">
+                        <ul>
+                            <li class="tag">Kizz</li>
+                            <li class="tag">API</li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+        </article>
+        <article>
+            <header>
+                <h1><a href="API/storage.html">Storage and Cache</a></h1>
+                <div class="meta">
+                    <div class="key">Update:</div>
+                    <div class="value">Yesterday at 8:21 PM</div>
+                    <div class="key">Tags:</div>
+                    <div class="value">
+                        <ul>
+                            <li class="tag">Kizz</li>
+                            <li class="tag">API</li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+        </article>
+        <article>
+            <header>
+                <h1><a href="API/theme-guide.html">Kizz Theme Guide</a></h1>
+                <div class="meta">
+                    <div class="key">Update:</div>
+                    <div class="value">Yesterday at 8:21 PM</div>
+                    <div class="key">Tags:</div>
+                    <div class="value">
+                        <ul>
+                            <li class="tag">Kizz</li>
+                            <li class="tag">API</li>
+                            <li class="tag">theme</li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+        </article>
+        <article>
+            <header>
+                <h1><a href="design/about-generator.html">关于 Generator</a></h1>
+                <div class="meta">
+                    <div class="key">Update:</div>
+                    <div class="value">Yesterday at 8:21 PM</div>
+                    <div class="key">Tags:</div>
+                    <div class="value">
+                        <ul>
+                            <li class="tag">Kizz</li>
+                            <li class="tag">API</li>
+                            <li class="tag">generator</li>
+                            <li class="tag">design</li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+        </article>
+        <article>
+            <header>
+                <h1><a href="https:/github.com/kizzjs/kizz-theme-paper">Kizz Theme Paper</a></h1>
+                <div class="meta">
+                    <div class="key">Update:</div>
+                    <div class="value">Yesterday at 8:21 PM</div>
+                    <div class="key">Tags:</div>
+                    <div class="value">
+                        <ul>
+                            <li class="tag">Kizz</li>
+                            <li class="tag">theme</li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+        </article>
+    </main>
+    <footer id="footer">Copyright (C) Kizz Team. All rights reserved.</footer>
+    <script></script>
+    <script src="static/js/prism.js"></script>
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/bundle.js"></script>
+    <script src="db.jsonp"></script>
+</body>
+
 </html>

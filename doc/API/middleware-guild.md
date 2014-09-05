@@ -1,21 +1,21 @@
-# Middleware Guide
+# Kizz Middleware Guide
 
 ## create plugin
 
-```
+```bash
 mkdir kizz-helloworld
 cd kizz-helloworld
 ```
 
 ### create package.json
 
-```
+```bash
 npm init
 ```
 
 ### create index.js
 
-```
+```bash
 gedit index.js
 ```
 
@@ -32,7 +32,7 @@ module.exports = function(app) {
 
 ### npm link
 
-```
+```bash
 cd myblog
 mkdir -p node_modules # create node_modules if not exists
 sudo npm link ~/code/kizz-helloworld/

@@ -1,4 +1,6 @@
-## This
+# Kizz API Documentation
+
+## This (Context)
 
 ### load order
 
@@ -10,7 +12,7 @@
 
 ### this.logger
 
-```
+```javascript
 this.logger.trace('Entering cheese testing');
 this.logger.debug('Got cheese.');
 this.logger.info('Cheese is Gouda.');

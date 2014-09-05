@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html charset="UTF-8">
+
+<head>
+    <!-- To view prerender-->
+    <!-- use chrome://net-internals/#prerender instead of dev tools-->
+    <!-- or it will be canceled-->
+    <link rel="kizz-base-url" href="..">
+    <link rel="stylesheet" href="../static/styles.css">
+    <title>Kizz Documentation</title>
+</head>
+
+<body>
+    <header id="header">
+        <h1><a href="../index.html">Kizz Documentation</a></h1>
+        <p>The official documentation for Kizz.</p>
+        <input id="search">
+    </header>
+    <main id="main">
+        <article>
+            <header>
+                <h1><a href="#">Kizz Middleware Guide</a></h1>
+                <div class="meta">
+                    <div class="key">Update:</div>
+                    <div class="value">Yesterday at 9:59 PM</div>
+                    <div class="key">Tags:</div>
+                    <div class="value">
+                        <ul class="tags">
+                            <li class="tag">Kizz</li>
+                            <li class="tag">API</li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+            <main>
+                <h2 id="create-plugin">create plugin</h2>
+                <pre><code class="lang-bash">mkdir kizz-helloworld
+cd kizz-helloworld
+</code></pre>
+                <h3 id="create-package-json">create package.json</h3>
+                <pre><code class="lang-bash">npm init
+</code></pre>
+                <h3 id="create-index-js">create index.js</h3>
+                <pre><code class="lang-bash">gedit index.js
+</code></pre>
+                <pre><code class="lang-javascript">module.exports = function(app) {
+    app.when(function *() {
+        return true;
+    }).use(function *(next) {
+        console.log(&quot;Hello World&quot;);
+        yield next;
+    });
+}
+</code></pre>
+                <h3 id="npm-link">npm link</h3>
+                <pre><code class="lang-bash">cd myblog
+mkdir -p node_modules # create node_modules if not exists
+sudo npm link ~/code/kizz-helloworld/
+</code></pre>
+                <h3 id="update-config">update config</h3>
+                <pre><code>plugins:
+    - kizz-helloworld
+</code></pre>
+            </main>
+        </article>
+    </main>
+    <footer id="footer">Copyright (C) Kizz Team. All rights reserved.</footer>
+    <script></script>
+    <script src="../static/js/prism.js"></script>
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/bundle.js"></script>
+    <script src="../db.jsonp"></script>
+</body>
+
+</html>

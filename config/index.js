@@ -1,3 +1,5 @@
+var path = require('path');
+
 module.exports = function(app) {
     app.use(function *(next) {
 
@@ -5,17 +7,21 @@ module.exports = function(app) {
 
         this.config = {
             site: {
-                name: "Site Name Here",
-                url: "http://example.com"
+                name: "Kizz Documentation",
+                description: "The official documentation for Kizz.",
+                url: "http://kizz.zenozeng.com/"
             },
             // global tags
             tags: [
-                "kizz",
-                "api",
-                "generator"
+                "Kizz",
+                "API",
+                "generator",
+                "develop",
+                "design",
+                "theme"
             ],
-            source: "doc/", // defaults to source/
-            target: ctx.cwd + "/public/" // target dir
+            source: "doc", // defaults to source/
+            target: path.join(ctx.cwd, "public") // target dir
         };
 
         yield next;

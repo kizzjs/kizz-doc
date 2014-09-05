@@ -205,3 +205,7 @@ Nginx -> HTTP Auth -> {
     /comments => 127.0.0.1:1234
 }
 ```
+
+## Guide
+
+Always use nodejs's `path.join`, `path.relative` instead of concating string.
