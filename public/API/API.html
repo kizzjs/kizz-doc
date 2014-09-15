@@ -1,20 +1,19 @@
 <!DOCTYPE html>
-<html charset="UTF-8">
+<html>
 
 <head>
-    <!-- To view prerender-->
-    <!-- use chrome://net-internals/#prerender instead of dev tools-->
-    <!-- or it will be canceled-->
-    <link rel="kizz-base-url" href="..">
-    <link rel="stylesheet" href="../static/styles.css">
+    <meta charset="UTF-8">
+    <meta name="generator" content="Kizz">
+    <meta name="kizz-base-url" content="..">
     <title>Kizz Documentation</title>
+    <link rel="stylesheet" href="../static/styles.css">
+    <link rel="alternate" type="application/atom+xml" href="../feed.xml">
 </head>
 
 <body>
     <header id="header">
         <h1><a href="../index.html">Kizz Documentation</a></h1>
         <p>The official documentation for Kizz.</p>
-        <input id="search">
     </header>
     <main id="main">
         <article>
@@ -22,7 +21,7 @@
                 <h1><a href="#">Kizz API Documentation</a></h1>
                 <div class="meta">
                     <div class="key">Update:</div>
-                    <div class="value">Yesterday at 10:00 PM</div>
+                    <div class="value">09/04/2014</div>
                     <div class="key">Tags:</div>
                     <div class="value">
                         <ul class="tags">
@@ -30,11 +29,17 @@
                             <li class="tag">API</li>
                         </ul>
                     </div>
+                    <div class="key">Categories:</div>
+                    <div class="value">
+                        <ul>
+                            <li class="cat">API</li>
+                        </ul>
+                    </div>
                 </div>
             </header>
             <main>
-                <h2 id="this-context-">This (Context)</h2>
-                <h3 id="load-order">load order</h3>
+                <h2>This (Context)</h2>
+                <h3>load order</h3>
                 <ul>
                     <li>
                         <p>this.logger</p>
@@ -46,50 +51,49 @@
                         <p>this.newFiles, this.changedFiles, this.unchangedFiles, this.removedFiles</p>
                     </li>
                 </ul>
-                <h3 id="this-logger">this.logger</h3>
-                <pre><code class="lang-javascript">this.logger.trace(&#39;Entering cheese testing&#39;);
-this.logger.debug(&#39;Got cheese.&#39;);
-this.logger.info(&#39;Cheese is Gouda.&#39;);
-this.logger.warn(&#39;Cheese is quite smelly.&#39;);
-this.logger.error(&#39;Cheese is too ripe!&#39;);
-this.logger.fatal(&#39;Cheese was breeding ground for listeria.&#39;);
+                <h3>this.logger</h3>
+                <pre><code class="language-javascript">this.logger.trace('Entering cheese testing');
+this.logger.debug('Got cheese.');
+this.logger.info('Cheese is Gouda.');
+this.logger.warn('Cheese is quite smelly.');
+this.logger.error('Cheese is too ripe!');
+this.logger.fatal('Cheese was breeding ground for listeria.');
 </code></pre>
-                <p>see also: <a href="https://github.com/nomiddlename/log4js-node">https://github.com/nomiddlename/log4js-node</a>
-                </p>
-                <h3 id="this-storage">this.storage</h3>
-                <pre><code class="lang-javascript">var str = this.storage.getItem(&#39;key&#39;);
-this.storage.setItem(&#39;key2&#39;, &#39;STRING&#39;);
+                <p>see also: https://github.com/nomiddlename/log4js-node</p>
+                <h3>this.storage</h3>
+                <pre><code class="language-javascript">var str = this.storage.getItem('key');
+this.storage.setItem('key2', 'STRING');
 </code></pre>
-                <h3 id="this-cache">this.cache</h3>
-                <pre><code class="lang-javascript">var str = this.cache.getItem(&#39;key&#39;);
-this.cache.setItem(&#39;key2&#39;, &#39;STRING&#39;);
+                <h3>this.cache</h3>
+                <pre><code class="language-javascript">var str = this.cache.getItem('key');
+this.cache.setItem('key2', 'STRING');
 </code></pre>
-                <h3 id="this-newfiles">this.newFiles</h3>
-                <pre><code class="lang-javascript">[
+                <h3>this.newFiles</h3>
+                <pre><code class="language-javascript">[
     {
-        path: &#39;path of file A&#39;,
-        modificationTime: &#39;YYYY-MM-DD H:mm:ss Z&#39;,
-        creationTime: &#39;YYYY-MM-DD H:mm:ss Z&#39;
+        path: 'path of file A',
+        modificationTime: 'YYYY-MM-DD H:mm:ss Z',
+        creationTime: 'YYYY-MM-DD H:mm:ss Z'
     },
     {}
 ]
 </code></pre>
-                <h3 id="this-changedfiles">this.changedFiles</h3>
-                <pre><code class="lang-javascript">[
+                <h3>this.changedFiles</h3>
+                <pre><code class="language-javascript">[
     {
-        path: &#39;path of file A&#39;,
-        modificationTime: &#39;YYYY-MM-DD H:mm:ss Z&#39;,
-        creationTime: &#39;YYYY-MM-DD H:mm:ss Z&#39;
+        path: 'path of file A',
+        modificationTime: 'YYYY-MM-DD H:mm:ss Z',
+        creationTime: 'YYYY-MM-DD H:mm:ss Z'
     },
     {}
 ]
 </code></pre>
-                <h3 id="this-unchangedfiles">this.unchangedFiles</h3>
-                <pre><code class="lang-javascript">[
+                <h3>this.unchangedFiles</h3>
+                <pre><code class="language-javascript">[
     {
-        path: &#39;path of file A&#39;,
-        modificationTime: &#39;YYYY-MM-DD H:mm:ss Z&#39;,
-        creationTime: &#39;YYYY-MM-DD H:mm:ss Z&#39;,
+        path: 'path of file A',
+        modificationTime: 'YYYY-MM-DD H:mm:ss Z',
+        creationTime: 'YYYY-MM-DD H:mm:ss Z',
         content: &quot;html&quot;, // by kizz-markdown
         title: &quot;title&quot;, // by kizz-markdown
         tags: [&quot;tag1&quot;, &quot;tag2&quot;] // front yaml or kizz-guess-tags
@@ -97,12 +101,12 @@ this.cache.setItem(&#39;key2&#39;, &#39;STRING&#39;);
     {}
 ]
 </code></pre>
-                <h3 id="this-removedfiles">this.removedFiles</h3>
-                <pre><code class="lang-javascript">[
+                <h3>this.removedFiles</h3>
+                <pre><code class="language-javascript">[
     {
-        path: &#39;path of file A&#39;,
-        modificationTime: &#39;YYYY-MM-DD H:mm:ss Z&#39;,
-        creationTime: &#39;YYYY-MM-DD H:mm:ss Z&#39;,
+        path: 'path of file A',
+        modificationTime: 'YYYY-MM-DD H:mm:ss Z',
+        creationTime: 'YYYY-MM-DD H:mm:ss Z',
         content: &quot;html&quot;, // by kizz-markdown
         title: &quot;title&quot;, // by kizz-markdown
         tags: [&quot;tag1&quot;, &quot;tag2&quot;] // front yaml or kizz-guess-tags
@@ -114,11 +118,7 @@ this.cache.setItem(&#39;key2&#39;, &#39;STRING&#39;);
         </article>
     </main>
     <footer id="footer">Copyright (C) Kizz Team. All rights reserved.</footer>
-    <script></script>
-    <script src="../static/js/prism.js"></script>
-    <script src="../static/js/jquery.min.js"></script>
     <script src="../static/js/bundle.js"></script>
-    <script src="../db.jsonp"></script>
 </body>
 
 </html>

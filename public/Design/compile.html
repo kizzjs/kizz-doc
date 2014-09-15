@@ -18,28 +18,44 @@
     <main id="main">
         <article>
             <header>
-                <h1><a href="#">Kizz Theme Guide</a></h1>
+                <h1><a href="#">编译时？</a></h1>
                 <div class="meta">
                     <div class="key">Update:</div>
-                    <div class="value">09/04/2014</div>
+                    <div class="value">09/08/2014</div>
                     <div class="key">Tags:</div>
                     <div class="value">
                         <ul class="tags">
-                            <li class="tag">Kizz</li>
-                            <li class="tag">API</li>
-                            <li class="tag">theme</li>
+                            <li class="tag">design</li>
                         </ul>
                     </div>
                     <div class="key">Categories:</div>
                     <div class="value">
                         <ul>
-                            <li class="cat">API</li>
+                            <li class="cat">Design</li>
                         </ul>
                     </div>
                 </div>
             </header>
             <main>
-                <p>Themes are just middlewares.</p>
+                <p>为什么不把所有的东西都丢纯前端去做，而要有一个编译时？</p>
+                <p>有些事情，只能编译时做：</p>
+                <ul>
+                    <li>
+                        <p>记录文章的发布时间、修改时间</p>
+                        <p>如果非要在运行时做这个，则只能手工指定，那与我的初衷不符。</p>
+                    </li>
+                    <li>
+                        <p>SEO</p>
+                        <p>虽然不是那么在乎这个，但是总是希望写的东西可以被需要的人检索到。</p>
+                    </li>
+                    <li>
+                        <p>Feed (RSS/Atom)</p>
+                        <p>纯前端很难做这个的</p>
+                    </li>
+                    <li>
+                        <p>fs.readdir</p>
+                    </li>
+                </ul>
             </main>
         </article>
     </main>

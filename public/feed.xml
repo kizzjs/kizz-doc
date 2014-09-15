@@ -2,10 +2,88 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title>Kizz Documentation</title>
     <link>http://kizz.zenozeng.com/</link>
-    <updated>2014-09-05T06:46:45Z</updated>
+    <updated>2014-09-15T06:12:27Z</updated>
     <link rel="alternate" href="http://kizz.zenozeng.com/"/>
     <subtitle>The official documentation for Kizz.</subtitle>
     <generator>Feed for Node.js</generator>
+    <entry>
+        <title type="html"><![CDATA[Kizz Config Example]]></title>
+        <id>http://kizz.zenozeng.com/Getting%20Started/config.html</id>
+        <link href="http://kizz.zenozeng.com/Getting%20Started/config.html">
+        </link>
+        <updated>2014-09-15T06:07:33Z</updated>
+        <content type="html"><![CDATA[
+<h2>comments</h2>
+<h3>config/disqus.html</h3>
+<pre><code class="language-html"> &lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'kizzjs'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    &lt;/script&gt;
+    &lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;http://disqus.com/?ref_noscript&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;
+    &lt;a href=&quot;http://disqus.com&quot; class=&quot;dsq-brlink&quot;&gt;comments powered by &lt;span class=&quot;logo-disqus&quot;&gt;Disqus&lt;/span&gt;&lt;/a&gt;
+</code></pre>
+<pre><code class="language-javascript">var path = require('path'),
+    fs = require('co-fs');
+
+module.exports = function(app) {
+    app.use(function *(next) {
+
+        var ctx = this;
+
+        this.config = {
+            site: {
+                name: &quot;Kizz Documentation&quot;,
+                description: &quot;The official documentation for Kizz.&quot;,
+                url: &quot;http://kizz.zenozeng.com/&quot;
+            },
+            // global tags
+            tags: [
+                &quot;Kizz&quot;,
+                &quot;API&quot;,
+                &quot;generator&quot;,
+                &quot;develop&quot;,
+                &quot;design&quot;,
+                &quot;theme&quot;
+            ],
+            source: &quot;doc&quot;, // defaults to source/
+            target: path.join(ctx.cwd, &quot;public&quot;), // target dir
+            comments: yield fs.readFile(path.join(__dirname, 'disqus.html'), {encoding: 'UTF-8'})
+        };
+
+        yield next;
+    });
+};
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[编译时？]]></title>
+        <id>http://kizz.zenozeng.com/Design/compile.html</id>
+        <link href="http://kizz.zenozeng.com/Design/compile.html">
+        </link>
+        <updated>2014-09-08T04:25:40Z</updated>
+        <content type="html"><![CDATA[
+<p>为什么不把所有的东西都丢纯前端去做，而要有一个编译时？</p>
+<p>有些事情，只能编译时做：</p>
+<ul>
+<li><p>记录文章的发布时间、修改时间</p>
+<p>如果非要在运行时做这个，则只能手工指定，那与我的初衷不符。</p></li>
+<li><p>SEO</p>
+<p>虽然不是那么在乎这个，但是总是希望写的东西可以被需要的人检索到。</p></li>
+<li><p>Feed (RSS/Atom)</p>
+<p>纯前端很难做这个的</p></li>
+<li><p>fs.readdir</p></li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Kizz API Documentation]]></title>
         <id>http://kizz.zenozeng.com/API/API.html</id>
@@ -13,59 +91,56 @@
         </link>
         <updated>2014-09-04T14:00:13Z</updated>
         <content type="html"><![CDATA[
-<h2 id="this-context-">This (Context)</h2>
-<h3 id="load-order">load order</h3>
+<h2>This (Context)</h2>
+<h3>load order</h3>
 <ul>
-<li><p>this.logger</p>
-</li>
-<li><p>this.config, this.storage</p>
-</li>
-<li><p>this.newFiles, this.changedFiles, this.unchangedFiles, this.removedFiles</p>
-</li>
+<li><p>this.logger</p></li>
+<li><p>this.config, this.storage</p></li>
+<li><p>this.newFiles, this.changedFiles, this.unchangedFiles, this.removedFiles</p></li>
 </ul>
-<h3 id="this-logger">this.logger</h3>
-<pre><code class="lang-javascript">this.logger.trace(&#39;Entering cheese testing&#39;);
-this.logger.debug(&#39;Got cheese.&#39;);
-this.logger.info(&#39;Cheese is Gouda.&#39;);
-this.logger.warn(&#39;Cheese is quite smelly.&#39;);
-this.logger.error(&#39;Cheese is too ripe!&#39;);
-this.logger.fatal(&#39;Cheese was breeding ground for listeria.&#39;);
+<h3>this.logger</h3>
+<pre><code class="language-javascript">this.logger.trace('Entering cheese testing');
+this.logger.debug('Got cheese.');
+this.logger.info('Cheese is Gouda.');
+this.logger.warn('Cheese is quite smelly.');
+this.logger.error('Cheese is too ripe!');
+this.logger.fatal('Cheese was breeding ground for listeria.');
 </code></pre>
-<p>see also: <a href="https://github.com/nomiddlename/log4js-node">https://github.com/nomiddlename/log4js-node</a></p>
-<h3 id="this-storage">this.storage</h3>
-<pre><code class="lang-javascript">var str = this.storage.getItem(&#39;key&#39;);
-this.storage.setItem(&#39;key2&#39;, &#39;STRING&#39;);
+<p>see also: https://github.com/nomiddlename/log4js-node</p>
+<h3>this.storage</h3>
+<pre><code class="language-javascript">var str = this.storage.getItem('key');
+this.storage.setItem('key2', 'STRING');
 </code></pre>
-<h3 id="this-cache">this.cache</h3>
-<pre><code class="lang-javascript">var str = this.cache.getItem(&#39;key&#39;);
-this.cache.setItem(&#39;key2&#39;, &#39;STRING&#39;);
+<h3>this.cache</h3>
+<pre><code class="language-javascript">var str = this.cache.getItem('key');
+this.cache.setItem('key2', 'STRING');
 </code></pre>
-<h3 id="this-newfiles">this.newFiles</h3>
-<pre><code class="lang-javascript">[
+<h3>this.newFiles</h3>
+<pre><code class="language-javascript">[
     {
-        path: &#39;path of file A&#39;,
-        modificationTime: &#39;YYYY-MM-DD H:mm:ss Z&#39;,
-        creationTime: &#39;YYYY-MM-DD H:mm:ss Z&#39;
+        path: 'path of file A',
+        modificationTime: 'YYYY-MM-DD H:mm:ss Z',
+        creationTime: 'YYYY-MM-DD H:mm:ss Z'
     },
     {}
 ]
 </code></pre>
-<h3 id="this-changedfiles">this.changedFiles</h3>
-<pre><code class="lang-javascript">[
+<h3>this.changedFiles</h3>
+<pre><code class="language-javascript">[
     {
-        path: &#39;path of file A&#39;,
-        modificationTime: &#39;YYYY-MM-DD H:mm:ss Z&#39;,
-        creationTime: &#39;YYYY-MM-DD H:mm:ss Z&#39;
+        path: 'path of file A',
+        modificationTime: 'YYYY-MM-DD H:mm:ss Z',
+        creationTime: 'YYYY-MM-DD H:mm:ss Z'
     },
     {}
 ]
 </code></pre>
-<h3 id="this-unchangedfiles">this.unchangedFiles</h3>
-<pre><code class="lang-javascript">[
+<h3>this.unchangedFiles</h3>
+<pre><code class="language-javascript">[
     {
-        path: &#39;path of file A&#39;,
-        modificationTime: &#39;YYYY-MM-DD H:mm:ss Z&#39;,
-        creationTime: &#39;YYYY-MM-DD H:mm:ss Z&#39;,
+        path: 'path of file A',
+        modificationTime: 'YYYY-MM-DD H:mm:ss Z',
+        creationTime: 'YYYY-MM-DD H:mm:ss Z',
         content: &quot;html&quot;, // by kizz-markdown
         title: &quot;title&quot;, // by kizz-markdown
         tags: [&quot;tag1&quot;, &quot;tag2&quot;] // front yaml or kizz-guess-tags
@@ -73,12 +148,12 @@ this.cache.setItem(&#39;key2&#39;, &#39;STRING&#39;);
     {}
 ]
 </code></pre>
-<h3 id="this-removedfiles">this.removedFiles</h3>
-<pre><code class="lang-javascript">[
+<h3>this.removedFiles</h3>
+<pre><code class="language-javascript">[
     {
-        path: &#39;path of file A&#39;,
-        modificationTime: &#39;YYYY-MM-DD H:mm:ss Z&#39;,
-        creationTime: &#39;YYYY-MM-DD H:mm:ss Z&#39;,
+        path: 'path of file A',
+        modificationTime: 'YYYY-MM-DD H:mm:ss Z',
+        creationTime: 'YYYY-MM-DD H:mm:ss Z',
         content: &quot;html&quot;, // by kizz-markdown
         title: &quot;title&quot;, // by kizz-markdown
         tags: [&quot;tag1&quot;, &quot;tag2&quot;] // front yaml or kizz-guess-tags
@@ -95,17 +170,17 @@ this.cache.setItem(&#39;key2&#39;, &#39;STRING&#39;);
         </link>
         <updated>2014-09-04T13:59:30Z</updated>
         <content type="html"><![CDATA[
-<h2 id="create-plugin">create plugin</h2>
-<pre><code class="lang-bash">mkdir kizz-helloworld
+<h2>create plugin</h2>
+<pre><code class="language-bash">mkdir kizz-helloworld
 cd kizz-helloworld
 </code></pre>
-<h3 id="create-package-json">create package.json</h3>
-<pre><code class="lang-bash">npm init
+<h3>create package.json</h3>
+<pre><code class="language-bash">npm init
 </code></pre>
-<h3 id="create-index-js">create index.js</h3>
-<pre><code class="lang-bash">gedit index.js
+<h3>create index.js</h3>
+<pre><code class="language-bash">gedit index.js
 </code></pre>
-<pre><code class="lang-javascript">module.exports = function(app) {
+<pre><code class="language-javascript">module.exports = function(app) {
     app.when(function *() {
         return true;
     }).use(function *(next) {
@@ -114,15 +189,16 @@ cd kizz-helloworld
     });
 }
 </code></pre>
-<h3 id="npm-link">npm link</h3>
-<pre><code class="lang-bash">cd myblog
+<h3>npm link</h3>
+<pre><code class="language-bash">cd myblog
 mkdir -p node_modules # create node_modules if not exists
 sudo npm link ~/code/kizz-helloworld/
 </code></pre>
-<h3 id="update-config">update config</h3>
+<h3>update config</h3>
 <pre><code>plugins:
     - kizz-helloworld
-</code></pre>]]></content>
+</code></pre>
+]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[Storage and Cache]]></title>
@@ -134,125 +210,40 @@ sudo npm link ~/code/kizz-helloworld/
 <p>Kizz uses <a href="https://github.com/zenozeng/version-storage">VersionStorage</a> for Storage and Cache.</p>
 <p>Storage are saved in <code>./.kizz/storage/</code> and Cache are saved in <code>./.kizz/cache/</code>.
 Storage and Cache have same API, but Cache will be cleared when <code>kizz rebuild</code>.</p>
-<h2 id="usage">Usage</h2>
-<h3 id="storage">Storage</h3>
-<pre><code class="lang-javascript">var upgrade = function(storage) {
+<h2>Usage</h2>
+<h3>Storage</h3>
+<pre><code class="language-javascript">var upgrade = function(storage) {
     var oldVersion = storage.version;
     if(oldVersion &lt; 1) {
         // Version 1 is the first version of the database.
-        storage.setItem(&#39;hello&#39;, &#39;[1, 2, 3]&#39;);
+        storage.setItem('hello', '[1, 2, 3]');
     }
     if(oldVersion &lt; 2) {
         // Version 2 changes the data structure of `hello`
-        var hello = storage.getItem(&#39;hello&#39;);
+        var hello = storage.getItem('hello');
         // do some remaping
-        storage.setItem(&#39;hello&#39;, newhello);
+        storage.setItem('hello', newhello);
     }
     if(oldVersion &lt; 3) {
         // Version 3 changes the name of `hello`
-        var hello = storage.getItem(&#39;hello&#39;);
-        storage.removeItem(&#39;hello&#39;);
-        storage.setItem(&#39;world&#39;, hello);
+        var hello = storage.getItem('hello');
+        storage.removeItem('hello');
+        storage.setItem('world', hello);
     }
     storage.setVersion(3);
 };
 
-var storage = new this.Storage(&#39;YOUR_UNIQUE_ID/DB_NAME&#39;, upgrade);
-var sth = storage.getItem(&#39;sth&#39;);
-storage.setItem(&#39;sth&#39;, &#39;STRING&#39;);
-storage.removeItem(&#39;sth&#39;);
+var storage = new this.Storage('YOUR_UNIQUE_ID/DB_NAME', upgrade);
+var sth = storage.getItem('sth');
+storage.setItem('sth', 'STRING');
+storage.removeItem('sth');
 </code></pre>
-<h3 id="cache">Cache</h3>
+<h3>Cache</h3>
 <p><strong>Note: Cache will be cleared when <code>kizz rebuild</code>.</strong></p>
-<pre><code class="lang-javascript">var cache = new this.Cache(&#39;YOUR_UNIQUE_ID/DB_NAME&#39;, upgrade);
-var sth = cache.getItem(&#39;sth&#39;);
-cache.setItem(&#39;sth&#39;, &#39;STRING&#39;);
-cache.removeItem(&#39;sth&#39;);
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Kizz Theme Guide]]></title>
-        <id>http://kizz.zenozeng.com/API/theme-guide.html</id>
-        <link href="http://kizz.zenozeng.com/API/theme-guide.html">
-        </link>
-        <updated>2014-09-04T12:21:36Z</updated>
-        <content type="html"><![CDATA[
-<p>Themes are just middlewares.</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[关于 Generator]]></title>
-        <id>http://kizz.zenozeng.com/design/about-generator.html</id>
-        <link href="http://kizz.zenozeng.com/design/about-generator.html">
-        </link>
-        <updated>2014-09-04T12:21:36Z</updated>
-        <content type="html"><![CDATA[
-<p>Async, Promise, Generator 是 Javascript 三种语法。</p>
-<p>虽然 generator 现在刚刚开始发展，但是我还是更加看好它，因为它很自然。</p>
-<p>当然还是有 Async Functions 就是啦。
-不过离 ES7 还远着呢，而且似乎社区现在也没有大量这方面的支持，
-所以在很长的一段时间内 kizz 都会使用 generator。</p>
-<p>Kizz 不介意破坏性改变，只要真的能够有所提升。</p>
-<h2 id="-">跳出流程控制</h2>
-<p>一个函数控制整个流程。
-关于这个，当然用传统的方式也是可以做到的。
-不过我是觉得看上去没有用 Generator 要来得自然就是了。</p>
-<h3 id="callback-version">callback version</h3>
-<pre><code class="lang-javascript">app.use(context, next) {
-    // do sth
-    var afterNext = function() {
-        // do sth later
-    }
-    next(context, afterNext);
-}
-</code></pre>
-<h3 id="promise-versioin">promise versioin</h3>
-<pre><code class="lang-javascript">app.use(context, next) {
-    // do sth
-    // next take context &amp; generate a new promise
-    next(context).then(function() {
-        // do sth later
-    });
-}
-</code></pre>
-<h2 id="-">异步到同步的转变</h2>
-<p><code>co</code> 这个库简化了异步的书写、提供了真正能用的 try catch 支持。</p>
-<p>脱离了大量的 callback，代码就变得直白了起来。
-（关于 Error Handle，NodeJS也提供了这个：<a href="http://nodejs.org/api/domain.html）">http://nodejs.org/api/domain.html）</a></p>
-<p>官方的例子：</p>
-<pre><code class="lang-javascript">var co = require(&#39;co&#39;);
-var thunkify = require(&#39;thunkify&#39;);
-var request = require(&#39;request&#39;);
-var get = thunkify(request.get);
-
-co(function *(){
-  var a = yield get(&#39;http://google.com&#39;);
-  var b = yield get(&#39;http://yahoo.com&#39;);
-  var c = yield get(&#39;http://cloudup.com&#39;);
-  console.log(a[0].statusCode);
-  console.log(b[0].statusCode);
-  console.log(c[0].statusCode);
-})()
-
-co(function *(){
-  var a = get(&#39;http://google.com&#39;);
-  var b = get(&#39;http://yahoo.com&#39;);
-  var c = get(&#39;http://cloudup.com&#39;);
-  var res = yield [a, b, c];
-  console.log(res);
-})()
-
-// Error handling
-
-co(function *(){
-  try {
-    var res = yield get(&#39;http://badhost.invalid&#39;);
-    console.log(res);
-  } catch(e) {
-    console.log(e.code) // ENOTFOUND
- }
-})()
+<pre><code class="language-javascript">var cache = new this.Cache('YOUR_UNIQUE_ID/DB_NAME', upgrade);
+var sth = cache.getItem('sth');
+cache.setItem('sth', 'STRING');
+cache.removeItem('sth');
 </code></pre>
 ]]></content>
     </entry>

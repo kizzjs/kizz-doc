@@ -1,4 +1,5 @@
-var path = require('path');
+var path = require('path'),
+    fs = require('co-fs');
 
 module.exports = function(app) {
     app.use(function *(next) {
@@ -21,7 +22,8 @@ module.exports = function(app) {
                 "theme"
             ],
             source: "doc", // defaults to source/
-            target: path.join(ctx.cwd, "public") // target dir
+            target: path.join(ctx.cwd, "public"), // target dir
+            comments: yield fs.readFile(path.join(__dirname, 'disqus.html'), {encoding: 'UTF-8'})
         };
 
         yield next;
