@@ -169,7 +169,7 @@ sudo npm update -g kizz
 
 ### Why Generator Functions?
 
-Gernerator 是最自然的一种书写异步方式，让人觉得很惊艳。
+Generator 是最自然的一种书写异步方式，让人觉得很惊艳。
 
 ### 与 Farbox 的不同？
 
